@@ -2,10 +2,14 @@
     "version": 2,
     "routes": [{
             "src": "/",
-            "dest": "/api/index.js?username=wangningkai"
+            "dest": "/api/index.js?username=JasonLovesDoggo"
         },
         {
             "src": "/user/(?<username>[^/]*)",
+            "dest": "/api/index.js?username=$username"
+        },
+        {
+            "src": "/profile/(?<username>[^/]*)",
             "dest": "/api/index.js?username=$username"
         },
         {
