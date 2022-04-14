@@ -20,6 +20,7 @@ const renderInfo = async (info, args = {}) => {
     content
   try {
     const user = info
+    console.log(user)
     const repos = user.repositories.nodes
     for (let i = 0; i < repos.length; i++) {
       stars += repos[i].stargazers.totalCount
