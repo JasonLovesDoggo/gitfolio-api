@@ -25,9 +25,9 @@ const renderInfo = async (info, args = {}) => {
       stars += repos[i].stargazers.totalCount
       isFork = repos[i].isFork
       let element
-      if (isFork == false) {
+      if (isFork === false) {
         element = document.getElementById('work_section')
-      } else if (isFork == true && includeFork == true) {
+      } else if (isFork === true && includeFork === true) {
         document.getElementById('forks').style.display = 'block'
         element = document.getElementById('forks_section')
       } else {
@@ -38,7 +38,7 @@ const renderInfo = async (info, args = {}) => {
         <section>
             <div class="section_title">${repos[i].name}</div>
             <div class="about_section">
-            <span style="display:${repos[i].shortDescriptionHTML == undefined ? 'none' : 'block'};">${
+            <span style="display:${repos[i].shortDescriptionHTML === undefined ? 'none' : 'block'};">${
         repos[i].shortDescriptionHTML
       }</span>
             </div>
@@ -56,7 +56,7 @@ const renderInfo = async (info, args = {}) => {
     }
     stars = kFormatter(stars)
     document.title = user.login
-    let background = `https://cdn.jsdelivr.net/gh/WangNingkai/BingImageApi@latest/images/latest.png`
+    let background = args.background //TODO: change via uri
     let themeSource = fs.readFileSync(path.join(assetDir, 'themes', `${theme}.css`))
     themeSource = themeSource.toString('utf-8')
     let themeTemplate = hbs.compile(themeSource)
@@ -105,7 +105,7 @@ const renderInfo = async (info, args = {}) => {
                 user.location == null || !user.location ? 'none' : 'block'
               };"><i class="fas fa-map-marker-alt"></i> &nbsp; ${user.location}</span>
               <span style="display:${
-                user.isHireable == false || !user.isHireable ? 'none' : 'block'
+                user.isHireable === false || !user.isHireable ? 'none' : 'block'
               };"><i class="fas fa-user-tie"></i> &nbsp; Available for hire</span>
               `
     content = '<!DOCTYPE html>' + window.document.documentElement.outerHTML
