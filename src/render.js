@@ -8,6 +8,7 @@ const jsdom = require('jsdom').JSDOM,
     resources: 'usable',
   }
 const { kFormatter, renderGithub } = require('../src/utils')
+const { logger } = require('./utils')
 
 const renderInfo = async (info, args = {}) => {
   const dir = path.resolve(__dirname, '..')
@@ -20,7 +21,7 @@ const renderInfo = async (info, args = {}) => {
     content
   try {
     const user = info
-    console.log(user)
+    logger.log(user)
     const repos = user.repositories.nodes
     for (let i = 0; i < repos.length; i++) {
       stars += repos[i].stargazers.totalCount
