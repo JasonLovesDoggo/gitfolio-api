@@ -28,7 +28,6 @@ module.exports = async (req, res) => {
   )
   renderInfo(info, { theme: themeType, background: backgroundIMG, includeFork: parseBoolean(includeFork) }).then(
     (value) => {
-      res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
       return res.send(value)
     },
   )
