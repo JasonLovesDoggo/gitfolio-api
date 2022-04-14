@@ -26,10 +26,10 @@ module.exports = async (req, res) => {
     CONSTANTS.THIRTY_MINUTES,
     CONSTANTS.ONE_DAY,
   )
-  res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
   renderInfo(info, { theme: themeType, background: backgroundIMG, includeFork: parseBoolean(includeFork) }).then(
     (value) => {
-      res.send(value)
+      res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}`)
+      return res.send(value)
     },
   )
 }
